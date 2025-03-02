@@ -27,6 +27,14 @@ game=True
 clock=time.Clock()
 FPS=60
 
+font.init()
+font = font.Font(None, 70)
+win = font.render('YOU WIN!', True, (255, 215, 0))
+lose = font.render('YOU LOSE!', True, (180, 0, 0))
+
+lose2=transform.scale(image.load("lose.png"),(700,500))
+win2 = transform.scale(image.load("semya.jpg"),(700,500))
+
 while game:
     for e in event.get():
         if e.type==QUIT:
