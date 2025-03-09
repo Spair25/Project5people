@@ -65,7 +65,7 @@ for plt in level:
         x+=50
     y+=50
 
-
+kaunt= 0
 
 game=True
 clock=time.Clock()
@@ -73,13 +73,15 @@ FPS=60
 
 font.init()
 font = font.Font(None, 70)
+font2 = font.SysFont('Arial', 50)
 win = font.render('YOU WIN!', True, (255, 215, 0))
 lose = font.render('YOU LOSE!', True, (180, 0, 0))
 
 lose2=transform.scale(image.load("lose.png"),(700,500))
 win2 = transform.scale(image.load("semya.jpg"),(700,500))
 
-
+text = font2.render(""+ str(kaunt),1, (255, 255, 255))
+window.blit(text, (10,20))
 
 while game:
     for e in event.get():
