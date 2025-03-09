@@ -40,6 +40,7 @@ platforms=sprite.Group()
 portals=sprite.Group()
 coldrons=sprite.Group()
 leders=sprite.Group()
+glasses=sprite.Group()
 magician=Player("magician.png",50,500,10)
 x=0
 y=0
@@ -58,6 +59,9 @@ for plt in level:
         if p=="H":
             leder=GameSprite('leder.png',x,y,0)
             leders.add(leder)
+        if p=="8":
+            glass=GameSprite('glass.png',x,y,0)
+            glasses.add(glass)
         x+=50
     y+=50
 
@@ -93,6 +97,8 @@ while game:
         coldron.reset()
     for leder in leders:
         leder.reset()
+    for glass in glasses:
+        glass.reset()
         
     display.update()
     time.delay(50)
