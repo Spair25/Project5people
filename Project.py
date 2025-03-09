@@ -16,7 +16,7 @@ class Player(GameSprite):
         keys = key.get_pressed()
         if keys[K_LEFT] and self.rect.x > 5:
             self.rect.x -= self.speed
-        if keys[K_RIGHT] and self.rect.x <650:
+        if keys[K_RIGHT] and self.rect.x <750:
             self.rect.x += self.speed
 
 window=display.set_mode((800,600))
