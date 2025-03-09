@@ -23,7 +23,7 @@ window=display.set_mode((800,600))
 display.set_caption("Магічний котел")
 background=transform.scale(image.load("background.jpg"),(800,600))
 
-magician=Player("magician.png",50,500,100,100,10)
+magician=Player("magician.png",50,500,10)
 
 game=True
 clock=time.Clock()
