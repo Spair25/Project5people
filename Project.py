@@ -1,9 +1,9 @@
 from pygame import * 
 
 class GameSprite(sprite.Sprite):
-    def __init__(self, player_image, player_x, player_y, player_speed):
+    def __init__(self, player_image, player_x, player_y,size_x,size_y, player_speed):
         super().__init__()
-        self.image = transform.scale(image.load(player_image), (50, 50))
+        self.image = transform.scale(image.load(player_image), (size_x,size_y))
         self.speed = player_speed
         self.rect = self.image.get_rect()
         self.rect.x = player_x
@@ -27,7 +27,7 @@ level=["                " ,
        "            0  u",
        "            ----",
        "                ",
-       "                ",
+       "    8           ",
        "    H           ",
        "  - H           ",
        "    H       H-- ",
@@ -41,26 +41,26 @@ portals=sprite.Group()
 coldrons=sprite.Group()
 leders=sprite.Group()
 glasses=sprite.Group()
-magician=Player("magician.png",50,500,10)
+magician=Player("magician.png",50,500,50,50,10)
 x=0
 y=0
 for plt in level:
     x=0
     for p in plt:
         if p=="-":
-            platform=GameSprite('platform.png',x,y,0)
+            platform=GameSprite('platform.png',x,y,50,50,0)
             platforms.add(platform)
         if p=="0":
-            portal=GameSprite('portale.png',x,y,0)
+            portal=GameSprite('portale.png',x,y,50,50,0)
             portals.add(portal)
         if p=="u":
-            coldron=GameSprite('coldron.png',x,y,0)
+            coldron=GameSprite('coldron.png',x,y,50,50,0)
             coldrons.add(coldron)
         if p=="H":
-            leder=GameSprite('leder.png',x,y,0)
+            leder=GameSprite('leder.png',x,y,50,50,0)
             leders.add(leder)
         if p=="8":
-            glass=GameSprite('glass.png',x,y,0)
+            glass=GameSprite('glass.png',x,y,50,50,0)
             glasses.add(glass)
         x+=50
     y+=50
