@@ -22,16 +22,16 @@ class Player(GameSprite):
 
 class Enemy(GameSprite):
     direction = "left"
-    def update(self):
-        if self.rect.x<=454:
+    def update(self,f,t):
+        if self.rect.x<=f:
             self.direction = "right"
-        if self.rect.x >= 725:
+        if self.rect.x >= t:
             self.direction = "left"
         if self.direction == "left":
             self.rect.x -= self.speed
         else:
             self.rect.x += self.speed
-
+            
 window=display.set_mode((800,600))
 display.set_caption("Магічний котел")
 background=transform.scale(image.load("background.jpg"),(800,600))
