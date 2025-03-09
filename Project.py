@@ -103,3 +103,4 @@ while game:
     display.update()
     time.delay(50)
     clock.tick(FPS)
+# когда премия?
