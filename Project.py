@@ -31,6 +31,15 @@ class Enemy(GameSprite):
             self.rect.x -= self.speed
         else:
             self.rect.x += self.speed
+    def update1(self):
+        if self.rect.x<=600:
+            self.direction = "right"
+        if self.rect.x >=730:
+            self.direction = "left"
+        if self.direction == "left":
+            self.rect.x -= self.speed
+        else:
+            self.rect.x += self.speed
             
 window=display.set_mode((800,600))
 display.set_caption("Магічний котел")
@@ -56,6 +65,8 @@ leders=sprite.Group()
 glasses=sprite.Group()
 clevers=sprite.Group()
 magician=Player("magician.png",50,500,50,50,10)
+enemy = Enemy("enemy.png", 725, 486, 5, 0)
+enemy1 = Enemy("enemy.png", 743, 286, 5, 0)
 x=0
 y=0
 for plt in level:
@@ -115,6 +126,10 @@ while game:
     window.blit(background,(0,0))
     magician.reset()
     magician.update()  
+    enemy.reset()
+    enemy.update()
+    enemy1.reset()
+    enemy1.update1()
     for platform in platforms:
         platform.reset()
     for portal in portals:
