@@ -37,16 +37,16 @@ display.set_caption("Магічний котел")
 background=transform.scale(image.load("background.jpg"),(800,600))
 
 level=["                " ,
-       "            0  u",
+       "            0 +u",
        "            ----",
        "                ",
        "    8           ",
-       "    H           ",
-       "  - H           ",
-       "    H       H-- ",
+       "  + H           ",
+       "  - H        +  ",
+       "+   H    +  H-- ",
        "--      --  H   ",
        "    ---     H   ",
-       "               0",
+       "+        +     0",
        "----------------"]
 
 platforms=sprite.Group()
@@ -54,6 +54,7 @@ portals=sprite.Group()
 coldrons=sprite.Group()
 leders=sprite.Group()
 glasses=sprite.Group()
+clevers=sprite.Group()
 magician=Player("magician.png",50,500,50,50,10)
 x=0
 y=0
@@ -75,8 +76,12 @@ for plt in level:
         if p=="8":
             glass=GameSprite('glass.png',x,y,50,50,0)
             glasses.add(glass)
+        if p=="+":
+            clever=GameSprite('clever.png',x,y,50,50,0)
+            clevers.add(clever)
         x+=50
     y+=50
+
 
 kaunt= 0
 
@@ -120,6 +125,8 @@ while game:
         leder.reset()
     for glass in glasses:
         glass.reset()
+    for clever in clevers:
+        clever.reset()
         
     display.update()
     time.delay(50)
