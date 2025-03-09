@@ -10,10 +10,14 @@ class Player():
         if Keys[K_s] and self.rect.x < 450:
             self.rect.y += self.speed
 
-while Managment:
+while Manegment:
     for e in event.get():
         if e.type == QUIT:
             Game = False
         elif: e.type == KEYDOWN:
             if e.key == K_SPACE:
                 Player.fire()
+
+        if(sprite.collide_rect(Player, Wall)):
+            Player.rect.x = 50
+            Player.rect.y = 400
