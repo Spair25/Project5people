@@ -28,15 +28,18 @@ level=["                " ,
        "            ----",
        "                ",
        "                ",
-       "    -           ",
-       "  -             ",
-       "            --- ",
-       "--      --      ",
-       "    ---         ",
+       "                ",
+       " -H           H-",
+       "  H       --  H ",
+       "      --      H ",
+       " ---          H ",
        "               0",
        "----------------"]
 
 platforms=sprite.Group()
+portals=sprite.Group()
+coldrons=sprite.Group()
+leders=sprite.Group()
 magician=Player("magician.png",50,500,10)
 x=0
 y=0
@@ -52,6 +55,9 @@ for plt in level:
         if p=="u":
             coldron=GameSprite('coldron.png',x,y,0)
             coldrons.add(coldron)
+        if p=="H":
+            leder=GameSprite('leder.png',x,y,0)
+            leders.add(leder)
         x+=50
     y+=50
 
@@ -85,6 +91,8 @@ while game:
         portal.reset()
     for coldron in coldrons:
         coldron.reset()
+    for leder in leders:
+        leder.reset()
         
     display.update()
     time.delay(50)
