@@ -3,7 +3,7 @@ from pygame import *
 class GameSprite(sprite.Sprite):
     def __init__(self, player_image, player_x, player_y, player_speed):
         super().__init__()
-        self.image = transform.scale(image.load(player_image), (65, 65))
+        self.image = transform.scale(image.load(player_image), (50, 50))
         self.speed = player_speed
         self.rect = self.image.get_rect()
         self.rect.x = player_x
@@ -23,7 +23,33 @@ window=display.set_mode((800,600))
 display.set_caption("Магічний котел")
 background=transform.scale(image.load("background.jpg"),(800,600))
 
+level=["                " ,
+       "                ",
+       "            ----",
+       "                ",
+       "                ",
+       "    -           ",
+       "  -             ",
+       "            --- ",
+       "--      --      ",
+       "    ---         ",
+       "                ",
+       "----------------"]
+
+platforms=sprite.Group()
 magician=Player("magician.png",50,500,10)
+x=0
+y=0
+for plt in level:
+    x=0
+    for p in plt:
+        if p=="-":
+            platform=GameSprite('platform.png',x,y,0)
+            platforms.add(platform)
+        x+=50
+    y+=50
+
+
 
 game=True
 clock=time.Clock()
@@ -37,6 +63,8 @@ lose = font.render('YOU LOSE!', True, (180, 0, 0))
 lose2=transform.scale(image.load("lose.png"),(700,500))
 win2 = transform.scale(image.load("semya.jpg"),(700,500))
 
+
+
 while game:
     for e in event.get():
         if e.type==QUIT:
@@ -45,7 +73,8 @@ while game:
     window.blit(background,(0,0))
     magician.reset()
     magician.update()  
-
+    for platform in platforms:
+        platform.reset()
     display.update()
     time.delay(50)
     clock.tick(FPS)
