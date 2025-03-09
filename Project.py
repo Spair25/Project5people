@@ -24,7 +24,7 @@ display.set_caption("Магічний котел")
 background=transform.scale(image.load("background.jpg"),(800,600))
 
 level=["                " ,
-       "                ",
+       "            0  u",
        "            ----",
        "                ",
        "                ",
@@ -33,7 +33,7 @@ level=["                " ,
        "            --- ",
        "--      --      ",
        "    ---         ",
-       "                ",
+       "               0",
        "----------------"]
 
 platforms=sprite.Group()
@@ -46,6 +46,12 @@ for plt in level:
         if p=="-":
             platform=GameSprite('platform.png',x,y,0)
             platforms.add(platform)
+        if p=="0":
+            portal=GameSprite('portale.png',x,y,0)
+            portals.add(portal)
+        if p=="u":
+            coldron=GameSprite('coldron.png',x,y,0)
+            coldrons.add(coldron)
         x+=50
     y+=50
 
@@ -75,6 +81,11 @@ while game:
     magician.update()  
     for platform in platforms:
         platform.reset()
+    for portal in portals:
+        portal.reset()
+    for coldron in coldrons:
+        coldron.reset()
+        
     display.update()
     time.delay(50)
     clock.tick(FPS)
