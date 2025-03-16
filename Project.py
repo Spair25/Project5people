@@ -40,7 +40,28 @@ class Enemy(GameSprite):
             self.rect.x -= self.speed
         else:
             self.rect.x += self.speed
-            
+class Button():
+    def __init__(self, color, x, y, w, h, text, fsize, txt_color):
+
+        self.width = w
+        self.height = h
+        self.color = color
+
+        self.image = Surface([self.width, self.height])
+        self.image.fill((color))
+        
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+        self.fsize = fsize
+        self.text = text
+        self.txt_color = txt_color
+        self.txt_image = font.Font('font/impact.ttf', fsize).render(text, True, txt_color)
+
+    def draw(self, shift_x, shift_y): # цей метод малює кнопку із тектом в середині. Сам текст зміщенний на величини shift_x та shift_y
+        win.blit(self.image, (self.rect.x, self.rect.y))
+        win.blit(self.txt_image, (self.rect.x + shift_x, self.rect.y + shift_y))            
 window=display.set_mode((800,600))
 display.set_caption("Магічний котел")
 background=transform.scale(image.load("background.jpg"),(800,600))
