@@ -66,6 +66,10 @@ window=display.set_mode((800,600))
 display.set_caption("Магічний котел")
 background=transform.scale(image.load("background.jpg"),(800,600))
 
+# завантажуємо звуки
+mixer.init()
+
+
 level=["                " ,
        "            0 +u",
        "            ----",
