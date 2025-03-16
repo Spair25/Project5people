@@ -68,6 +68,8 @@ background=transform.scale(image.load("background.jpg"),(800,600))
 
 # завантажуємо звуки
 mixer.init()
+# звуки під час подій 
+#click=mixer.Sound('музичний файл.ogg')
 
 
 level=["                " ,
@@ -174,6 +176,8 @@ while game:
     display.update()
     time.delay(50)
     clock.tick(FPS)
+  
+    #click.play()
 # когда премия? никогда! почему?
 # когда премия? никогда! почему?
 # когда премия? никогда! почему?
