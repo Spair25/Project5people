@@ -138,6 +138,9 @@ text = font2.render(""+ str(kaunt),1, (255, 255, 255))
 window.blit(text, (10,20))
 
 while game:
+    # фонова музика
+    #mixer.music.load('game.ogg')
+    #mixer.music.play()
     for e in event.get():
         if e.type==QUIT:
             game=False
