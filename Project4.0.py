@@ -183,13 +183,13 @@ level = [
    "              +u",
    "            ----",
    "                ",
-   "    8           ",
-   "  + H           ",
+   "    8     -     ",
+   "  + H-          ",
    "  - H        +  ",
    "+   H    +  H-- ",
    "--      --  H   ",
    "    ---     H   ",
-   "+        +      ",
+   "+        +   +  ",
    "----------------"]
 
 platforms = sprite.Group()
@@ -201,19 +201,17 @@ magician = Player("magician.png", 50, 500, 10, 30)
 enemy = Enemy("enemy.png", 725, 486, 5, 0)
 enemy1 = Enemy("enemy.png", 743, 286, 5, 0)
 bullets = sprite.Group()
-portal1 = Portal("portal.png",756,483,0,0 )
+
 x = 0
 y = 0
-portals=sprite.Group()
+
 for plt in level:
     x = 0
     for p in plt:
         if p == "-":
             platform = GameSprite('grass.png', x, y, 0, 0)
             platforms.add(platform)
-        if p == "0":
-            portal = GameSprite('portal.png', x, y, 0, 0)
-            portals.add(portal)
+
         if p == "u":
             coldron = GameSprite('coldrone.png', x, y, 0, 0)
             coldrons.add(coldron)
@@ -249,6 +247,8 @@ fire_sound=mixer.Sound('FireSound.ogg')
 kill_sound=mixer.Sound('KillSound.ogg')
 mixer.music.load('PlaySound.ogg')
 mixer.music.play()
+colletction = 0
+colletction1 = 0
 while game:
     
     
@@ -269,8 +269,7 @@ while game:
     enemy1.update1()
     bullets.draw(window)
     bullets.update()
-    portal1.update()
-    portal1.reset()
+
 
     for platform in platforms:
         platform.reset()
@@ -292,15 +291,38 @@ while game:
         magician.rect.x = 50
         magician.rect.y = 500
         finish = True
-    if sprite.collide_rect(magician, portal1):
-        magician.rect.x = 50
-        magician.rect.y = 650
+
     if sprite.spritecollide(enemy, bullets, True):
         enemy.rect.y = -150
         bullets.remove(bullets)
         kill_sound.play()
 
+    for clever in clevers:
+        if sprite.collide_rect(magician, clever):
+            colletction = colletction + 1
+            clever.kill()
+    for glass in glasses:
+        if sprite.collide_rect(magician, glass):
+            colletction1 = colletction1 + 1
+            glass.kill()
+    if sprite.collide_rect(magician, coldron):
+        if colletction == 8 and colletction1 ==1:
+            window.blit(win, (200, 200))
+            
+            
 
+    if magician.rect.x < 5:
+        magician.rect.x = 50
+        magician.rect.y = 500
+    if magician.rect.x > 750:
+        magician.rect.x = 50
+        magician.rect.y = 500
+    if magician.rect.y < 0:
+        magician.rect.x = 50
+        magician.rect.y = 500
+    if magician.rect.y > 600:
+        magician.rect.x = 50
+        magician.rect.y = 500
     display.update()
     time.delay(50)
     clock.tick(FPS)
