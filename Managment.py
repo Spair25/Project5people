@@ -16,7 +16,6 @@ while Manegment:
             Game = False
         elif: e.type == KEYDOWN:
             if e.key == K_SPACE:
-                Player.fire()
 
         if(sprite.collide_rect(Player, Wall)):
             Player.rect.x = 50
