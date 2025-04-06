@@ -154,8 +154,8 @@ window=display.set_mode((800,600))
 display.set_caption("Магічний котел")
 background=transform.scale(image.load("menu.png"),(800,600))
 btn_start = Button((66, 49, 133, 1), 278, 310, 232, 69, 'START GAME',40, (255, 255, 255))
-btn_info = Button((66, 49, 133, 1), 278, 399, 232, 69, 'Control', 40, (255,255,255))
-btn_end = Button((66, 49, 133, 1), 278, 487, 232, 69,'End' ,40, (255,255,255))
+btn_info = Button((66, 49, 133, 1), 278, 399, 232, 69, 'CONTROL', 40, (255,255,255))
+btn_end = Button((66, 49, 133, 1), 278, 487, 232, 69,'END' ,40, (255,255,255))
 menu = True
 game = False
 def inf():
