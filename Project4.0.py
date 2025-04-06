@@ -233,12 +233,14 @@ clock = time.Clock()
 FPS = 120
 
 
-font = font.Font(None, 70)
-win = font.render('YOU WIN!', True, (255, 215, 0))
-lose = font.render('YOU LOSE!', True, (180, 0, 0))
+font1 = font.Font(None, 70)
+win = font1.render('YOU WIN!', True, (255, 215, 0))
+lose = font1.render('YOU LOSE!', True, (180, 0, 0))
 
-text = font.render("" + str(kaunt), 1, (255, 255, 255))
+text = font1.render("" + str(kaunt), 1, (255, 255, 255))
 window.blit(text, (10, 20))
+
+Fontt = font.Font(None, 30)
 # завантажуємо звуки
 mixer.init()
 
@@ -249,6 +251,8 @@ mixer.music.load('PlaySound.ogg')
 mixer.music.play()
 colletction = 0
 colletction1 = 0
+
+
 while game:
     
     
@@ -259,9 +263,19 @@ while game:
             if e.key == K_SPACE:
                 magician.fire()
 
+    
+       
+        
+
     magician.update()
 
     window.blit(background, (0, 0))
+    s=Fontt.render("Список",1,(255,255,255))
+    Text = Fontt.render("клевер:  " + str(colletction),1,(255,255,255))
+    window.blit(Text, (10,20))
+    TextL = Fontt.render("банка:   " + str(colletction1),1,(255,255,255))
+    window.blit(Text, (10,20))
+    window.blit(TextL, (10,40))
     magician.reset()
     enemy.reset()
     enemy.update()
