@@ -442,12 +442,19 @@ def start_level2():
     global level2_active
     level2_active = True
 
-
+def reset_level1():
+    platforms.empty()
+    coldrons.empty()
+    leders.empty()
+    glasses.empty()
+    clevers.empty()
+    enemy1.rect.y = -150
+    enemy.rect.y = -150
 
 def level_2():
     global level2_active  
     start_level2()
-    #reset_level1()  
+    reset_level1()  
     magician.rect.x = 50  
     magician.rect.y = 400
     x = 0
